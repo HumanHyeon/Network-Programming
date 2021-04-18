@@ -3,6 +3,7 @@
 #include <time.h>
 #include <string.h>
 #include <unistd.h>
+#include </usr/include/errno.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/wait.h>
@@ -55,7 +56,10 @@ int main(int argc, char **argv)
 	struct sockaddr_in server_addr, client_addr;
 	
 	if (argc != 2)
+	{
+		printf("잘못된 인자!\n");
 		return (-1);
+	}
 	echo_port = atoi(argv[1]);
 
 	daytime_port = echo_port + 1;
